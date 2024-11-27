@@ -4,27 +4,14 @@ import Menu from './components/Menu.vue'
 </script>
 
 <template>
-  <Menu />
-<body class="body">
-  <header>
-
-<h1 class="h1">background ffffffffffffffffff</h1>
-
-</header>
-  
-</body>
-  
-
-  <RouterView />
+  <Menu/>
+  <RouterView class="content"/>
 </template>
 
 <style scoped>
-.body {
-  background: url('assets/imob.jpg') no-repeat center center;
-
+.content {
+  margin-top: 60px;
+  padding: 20px;
 }
 
-.h1 {
-  color: aliceblue;
-}
 </style>
