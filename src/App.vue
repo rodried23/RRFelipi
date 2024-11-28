@@ -1,16 +1,18 @@
 <script setup lang="ts">
 import { RouterLink, RouterView } from 'vue-router'
-import Menu from './components/Menu.vue'
+import Cabecalho from './components/Cabecalho.vue'
+import Rodape from './components/Rodape.vue'
 </script>
 
 <template>
-  <Menu/>
+  <Cabecalho/>
   <RouterView class="content"/>
+  <Rodape/>
 </template>
 
 <style scoped>
 .content {
-  margin-top: 60px;
+  margin-top: 100px;
   padding: 20px;
 }
 
