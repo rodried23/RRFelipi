@@ -79,6 +79,11 @@ body {
   transform: translateY(-10px); /* Slight parallax effect */
 }
 
+.header.scrolled .navbar a {
+  color: white; /* Define a cor dos links como branca quando o cabeçalho estiver na classe "scrolled" */
+}
+
+
 .logo {
   width: 150px;
   transition: fill 0.3s ease;
@@ -90,7 +95,7 @@ body {
 }
 
 .navbar a {
-  color: white;
+  color: black;
   font-size: 18px;
   text-decoration: none;
   transition: color 0.3s ease;
