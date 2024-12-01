@@ -14,7 +14,7 @@
   />
       <nav class="navbar">
         <a href="/Sobre">About</a>
-        <a href="#" class="login">Entrar</a>
+        <a href="/Cadastro" class="login">Entrar</a>
       </nav>
     </header>
   </div>
