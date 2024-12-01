@@ -61,7 +61,6 @@
   
   <style scoped>
   #homepage {
-    font-family: "Poppins", sans-serif;
     color: #333;
     overflow-x: hidden;
   }
