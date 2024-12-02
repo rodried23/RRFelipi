@@ -12,6 +12,28 @@
           <label for="email">E-mail</label>
           <input type="email" id="email" v-model="form.email" placeholder="Digite seu e-mail" required />
         </div>
+
+        <div class="form-group">
+          <label for="telefone">Telefone</label>
+          <input type="telefone" id="telefone" v-model="form.telefone" placeholder="Digite seu Telefone" required />
+        </div>
+
+        <div class="form-group">
+  <label for="dataNascimento">Data de Nascimento</label>
+  <input 
+    type="date" 
+    id="dataNascimento" 
+    v-model="form.dataNascimento" 
+    placeholder="Selecione a data de nascimento" 
+    required 
+  />
+</div>
+
+
+        <div class="form-group">
+          <label for="login">Login</label>
+          <input type="login" id="login" v-model="form.login" placeholder="Digite sua Login" required />
+        </div>
         
         <div class="form-group">
           <label for="senha">Senha</label>
@@ -24,25 +46,47 @@
 </template>
 
 <script>
+import axios from "axios"; 
+
 export default {
   data() {
     return {
       form: {
-        nome: '',
-        email: '',
-        senha: ''
-      }
+        nome: "",
+        email: "",
+        telefone: "",
+        login: "",
+        senha: ""
+      },
+      apiEndpoint: "https://localhost:44372/api/conexao" // URL da API
     };
   },
   methods: {
-    handleSubmit() {
-      // Aqui você pode adicionar a lógica para enviar os dados para a API
-      alert(`Usuário ${this.form.nome} cadastrado com sucesso!`);
-      console.log('Dados do Formulário:', this.form);
+    async handleSubmit() {
+      try {
+        const response = await axios.post(this.apiEndpoint, this.form);
+
+        if (response.status === 200) {
+          alert(`Usuário ${this.form.nome} cadastrado com sucesso!`);
+          console.log("Resposta do Servidor:", response.data);
+          // Limpar formulário após cadastro
+          this.form = {
+            nome: "",
+            email: "",
+            telefone: "",
+            login: "",
+            senha: ""
+          };
+        }
+      } catch (error) {
+        console.error("Erro ao cadastrar usuário:", error);
+        alert("Erro ao cadastrar usuário. Tente novamente mais tarde.");
+      }
     }
   }
 };
 </script>
+
 
 <style scoped>
 body {
