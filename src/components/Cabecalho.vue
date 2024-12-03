@@ -1,5 +1,4 @@
 <template>
-  <div>
     <div :class="{ scrolled: isScrolled }" class="header">
       <img v-if="isScrolled" src="../assets/logo.svg" class="logo" alt="Logo" />
       <img v-if="!isScrolled" src="../assets/logo1.svg" class="logo" alt="Logo" />
@@ -8,7 +7,6 @@
         <a href="/Cadastro" class="login">Entrar</a>
       </nav>
     </div>
-  </div>
 </template>
 
 <script>
@@ -91,8 +89,4 @@ body {
   color: coral;
 }
 
-.content {
-  margin-top: 100px;
-  padding: 20px;
-}
 </style>

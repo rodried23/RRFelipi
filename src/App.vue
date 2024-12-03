@@ -6,7 +6,7 @@ import Rodape from './components/Rodape.vue'
 
 <template>
   <div class="page-layout">
-    <Cabecalho class="header" />
+    <Cabecalho class="header"/>
     <main class="content">
       <RouterView />
     </main>
@@ -15,7 +15,6 @@ import Rodape from './components/Rodape.vue'
 </template>
 
 <style>
-/* Reset de estilo básico */
 * {
   font-family: "Poppins", sans-serif;
   padding: 0;
@@ -23,31 +22,27 @@ import Rodape from './components/Rodape.vue'
   box-sizing: border-box;
 }
 
-/* Estrutura principal */
 .page-layout {
   display: flex;
   flex-direction: column;
-  min-height: 100vh; /* Garante que o layout ocupa toda a altura da tela */
+  min-height: 100vh; 
 }
 
-/* Estilo do cabeçalho */
 .header {
-  flex-shrink: 0; /* Garante que o cabeçalho não encolha */
+  flex-shrink: 0;
 }
 
-/* Área de conteúdo */
-.content {
-  flex: 1; /* Faz o conteúdo ocupar o espaço restante entre cabeçalho e rodapé */
+main {
+  flex: 1;
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 1rem;
-  background-color: #f8f9fa; /* Fundo claro para diferenciar o conteúdo */
+  background-color: #f8f9fa;
 }
 
-/* Estilo do rodapé */
 .footer {
-  flex-shrink: 0; /* Garante que o rodapé não encolha */
+  flex-shrink: 0; 
   background-color: #000;
   color: #fff;
   padding: 1rem;
