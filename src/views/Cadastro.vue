@@ -58,26 +58,26 @@ export default {
         login: "",
         senha: ""
       },
-      apiEndpoint: "https://localhost:44372/api/conexao" // URL da API
+      apiEndpoint: "https://localhost:7183/conexao" // URL da API
     };
   },
   methods: {
     async handleSubmit() {
       try {
-        const response = await axios.post(this.apiEndpoint, this.form);
+        const response = await axios.get(this.apiEndpoint);
 
-        if (response.status === 200) {
-          alert(`Usuário ${this.form.nome} cadastrado com sucesso!`);
-          console.log("Resposta do Servidor:", response.data);
-          // Limpar formulário após cadastro
-          this.form = {
-            nome: "",
-            email: "",
-            telefone: "",
-            login: "",
-            senha: ""
-          };
-        }
+        // if (response.status === 200) {
+        //   alert(`Usuário ${this.form.nome} cadastrado com sucesso!`);
+        //   console.log("Resposta do Servidor:", response.data);
+        //   // Limpar formulário após cadastro
+        //   this.form = {
+        //     nome: "",
+        //     email: "",
+        //     telefone: "",
+        //     login: "",
+        //     senha: ""
+        //   };
+        // }
       } catch (error) {
         console.error("Erro ao cadastrar usuário:", error);
         alert("Erro ao cadastrar usuário. Tente novamente mais tarde.");

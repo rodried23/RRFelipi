@@ -2,19 +2,14 @@
 
 #app {
   max-width: 1280px;
-  margin: 0 auto;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   padding: 2rem;
   font-weight: normal;
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
-a,
-.green {
-  text-decoration: none;
-  color: hsla(160, 100%, 37%, 1);
-  transition: 0.4s;
-  padding: 3px;
-}
 
 @media (hover: hover) {
   a:hover {
@@ -25,12 +20,22 @@ a,
 @media (min-width: 1024px) {
   body {
     display: flex;
-    place-items: center;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
   }
 
   #app {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    padding: 0 2rem;
+    grid-gap: 2rem;
+    padding: 0;
+  }
+}
+
+@media (max-width: 1024px) {
+  #app {
+    padding: 0;
   }
 }

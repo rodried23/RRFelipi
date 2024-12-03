@@ -1,200 +1,179 @@
 <template>
-    <div id="homepage">
-      <section id="projects" class="projects-section">
-        <div class="container">
-          <div class="project-card">
-            <h2>Estilo e Preço</h2>
-            <p>
-              Projetos que combinam design e funcionalidade para sua casa ou
-              negócio, sempre com atenção aos detalhes.
-            </p>
-          </div>
-          <div class="project-card">
-            <h2>Facilidade e Conforto</h2>
-            <p>
-              Soluções que transformam ideias em realidade com eficiência e
-              inovação.
-            </p>
-          </div>
+  <section class="background-section">
+    <div class="form-card">
+      <h1>Encontre um lar para chamar de seu</h1>
+      <div class="tabs">
+        <button :class="{ active: selectedTab === 'alugar' }" @click="selectedTab = 'alugar'">Alugar</button>
+        <button :class="{ active: selectedTab === 'comprar' }" @click="selectedTab = 'comprar'">Comprar</button>
+      </div>
+      <form class="search-form">
+        <div class="form-group">
+          <input type="text" placeholder="Busque por cidade" v-model="cidade" />
         </div>
-      </section>
-  
-      <section class="parallax showcase">
-        <div class="content">
-          <h2>Transforme Sua Visão</h2>
-          <p>
-            Inspiramos confiança com designs modernos e exclusivos. Seja bem-vindo
-            ao futuro da arquitetura.
-          </p>
-          <button class="cta-button">Explore Mais</button>
+        <div class="form-group">
+          <input type="text" placeholder="Busque por bairro" v-model="bairro" />
         </div>
-      </section>
-  
-      <section class="info-section">
-        <div class="container">
-          <div class="info-box">
-            <h3>Sobre Nossos Projetos</h3>
-            <p>
-              Oferecemos designs únicos e personalizados para atender suas
-              expectativas e estilo de vida.
-            </p>
-            <button class="info-button">Saiba Mais</button>
-          </div>
-          <div class="info-box">
-            <h3>Por Que Escolher a Gente</h3>
-            <p>
-              Experiência, dedicação e compromisso em entregar qualidade em cada
-              detalhe.
-            </p>
-            <button class="info-button">Veja Depoimentos</button>
-          </div>
+        <div class="form-group">
+          <select v-model="valor">
+            <option value="">Valor total até</option>
+            <option value="1000">R$ 1.000</option>
+            <option value="2000">R$ 2.000</option>
+            <option value="5000">R$ 5.000</option>
+          </select>
         </div>
-      </section>
+        <div class="form-group">
+          <select v-model="quartos">
+            <option value="">Nº de quartos</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+          </select>
+        </div>
+        <button type="submit" class="btn-search">Buscar imóveis</button>
+      </form>
+      <div class="owner-section">
+        <p>É proprietário?</p>
+        <a href="#">Veja os serviços para você</a>
+      </div>
     </div>
-  </template>
-  
-  <script>
-  export default {
-    name: "HomePage",
-  };
-  </script>
-  
-  <style scoped>
-  #homepage {
-    color: #333;
-    overflow-x: hidden;
-  }
-  
-  .projects-section {
-    padding: 60px 20px;
-    background-color: #f9f9f9;
-    text-align: center;
-  }
-  
-  .project-card {
-    margin: 20px auto;
-    padding: 30px;
-    max-width: 400px;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
-  }
-  
-  .project-card:hover {
-    transform: translateY(-10px);
-  }
-  
-  .project-card h2 {
-    font-size: 24px;
-    color: #333;
-    margin-bottom: 15px;
-  }
-  
-  .project-card p {
-    font-size: 16px;
-    line-height: 1.6;
-    color: #555;
-  }
+  </section>
+</template>
 
-  .showcase {
-    position: relative;
-    height: 500px;
-    background-image: url("../assets/Leonardo_Vision_XL_Design_a_captivating_background_image_for_a_0.jpg");
-    background-attachment: fixed;
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    text-align: center;
-  }
-  
-  .showcase .content {
-    background: rgba(0, 0, 0, 0.6);
-    padding: 30px;
-    border-radius: 15px;
-  }
-  
-  .showcase h2 {
-    font-size: 36px;
-    margin-bottom: 20px;
-  }
-  
-  .showcase p {
-    font-size: 18px;
-    margin-bottom: 20px;
-  }
-  
-  .cta-button {
-    background-color: #ff7f50;
-    border: none;
-    padding: 12px 25px;
-    color: white;
-    border-radius: 25px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: all 0.3s ease;
-  }
-  
-  .cta-button:hover {
-    background-color: #ff5733;
-  }
-  
-  .info-section {
-    display: flex;
-    justify-content: space-around;
-    padding: 60px 20px;
-    background: #fff;
-    flex-wrap: wrap;
-  }
-  
-  .info-box {
-    max-width: 400px;
-    margin: 20px;
-    text-align: center;
-  }
-  
-  .info-box h3 {
-    font-size: 22px;
-    margin-bottom: 15px;
-  }
-  
-  .info-box p {
-    font-size: 16px;
-    line-height: 1.8;
-    margin-bottom: 20px;
-    color: #555;
-  }
-  
-  .info-button {
-    background-color: #333;
-    color: white;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 25px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-  }
-  
-  .info-button:hover {
-    background-color: #555;
-  }
-  
+<script>
+export default {
+  data() {
+    return {
+      selectedTab: 'alugar',
+      cidade: '',
+      bairro: '',
+      valor: '',
+      quartos: '',
+    };
+  },
+};
+</script>
 
-  @media (max-width: 768px) {
-    .info-section {
-      flex-direction: column;
-      align-items: center;
-    }
-  
-    .showcase {
-      height: 400px;
-    }
-  
-    .showcase h2 {
-      font-size: 28px;
-    }
+<style scoped>
+/* Section with background */
+.background-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 20px;
+  background: url('../assets/fundoHome.jpg') no-repeat center center/cover;
+  border-radius: 12px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Form Card */
+.form-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  width: 100%;
+  max-width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
+h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+  color: #333;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.tabs button {
+  flex: 1;
+  padding: 10px;
+  margin: 0 5px;
+  border: none;
+  border-radius: 20px;
+  background-color: #f5f5f5;
+  cursor: pointer;
+  font-weight: bold;
+  color: #666;
+  transition: all 0.3s ease;
+}
+
+.tabs button.active {
+  background-color: #3b82f6;
+  color: #fff;
+}
+
+/* Form */
+.search-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.form-group input,
+.form-group select {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  width: 100%;
+}
+
+input:focus,
+select:focus {
+  border-color: #3b82f6;
+  outline: none;
+}
+
+/* Button */
+.btn-search {
+  padding: 10px;
+  background-color: #3b82f6;
+  color: white;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-search:hover {
+  background-color: #2563eb;
+}
+
+/* Owner Section */
+.owner-section {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.owner-section p {
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.owner-section a {
+  color: #3b82f6;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* Responsiveness */
+@media (max-width: 768px) {
+  .form-card {
+    margin: 0 auto;
+    width: 90%;
   }
-  </style>
+  .background-section {
+    border-radius: 0;
+  }
+}
+</style>

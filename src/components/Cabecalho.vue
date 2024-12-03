@@ -1,22 +1,13 @@
 <template>
   <div>
-    <header :class="{ scrolled: isScrolled }" class="header">
-      <!-- SVG Logo -->
-      <img v-if="isScrolled"
-    src="../assets/logo.svg" 
-    class="logo" 
-    alt="Logo" 
-  />
-  <img v-if="!isScrolled"
-    src="../assets/logo1.svg" 
-    class="logo" 
-    alt="Logo" 
-  />
+    <div :class="{ scrolled: isScrolled }" class="header">
+      <img v-if="isScrolled" src="../assets/logo.svg" class="logo" alt="Logo" />
+      <img v-if="!isScrolled" src="../assets/logo1.svg" class="logo" alt="Logo" />
       <nav class="navbar">
         <a href="/Sobre">About</a>
         <a href="/Cadastro" class="login">Entrar</a>
       </nav>
-    </header>
+    </div>
   </div>
 </template>
 
@@ -29,7 +20,7 @@ export default {
   },
   methods: {
     handleScroll() {
-      this.isScrolled = window.scrollY > 50; // Change state when scrolled 50px
+      this.isScrolled = window.scrollY > 50;
     },
   },
   mounted() {
@@ -42,14 +33,6 @@ export default {
 </script>
 
 <style scoped>
-/* General Styles */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
-}
-
 body {
   background-color: #020202cc;
   color: #fff;
@@ -69,29 +52,32 @@ body {
   border-bottom: 2px solid rgba(255, 255, 255, 0.2);
   z-index: 1000;
   transition: background 0.3s ease, box-shadow 0.3s ease;
-  will-change: transform; /* Improve performance */
+  will-change: transform;
   transform: translateY(0);
 }
 
 .header.scrolled {
   background: rgba(0, 0, 0, 0.8);
   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3);
-  transform: translateY(-10px); /* Slight parallax effect */
+  transform: translateY(-10px);
 }
 
 .header.scrolled .navbar a {
-  color: white; /* Define a cor dos links como branca quando o cabeçalho estiver na classe "scrolled" */
+  color: white;
 }
 
 
 .logo {
   width: 150px;
   transition: fill 0.3s ease;
+  margin-left: 8vh;
+  margin-right: 8vh;  
 }
 
 .navbar {
   display: flex;
   gap: 20px;
+  margin-right: 8vh;
 }
 
 .navbar a {
@@ -105,7 +91,6 @@ body {
   color: coral;
 }
 
-/* Adjust content margin to avoid overlap with header */
 .content {
   margin-top: 100px;
   padding: 20px;
