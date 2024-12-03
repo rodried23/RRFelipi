@@ -1,33 +1,36 @@
 <template>
   <section class="background-section">
+  <div class="form-wrapper">
     <div class="form-card">
       <h1>Encontre um lar para chamar de seu</h1>
       <div class="tabs">
         <button :class="{ active: selectedTab === 'alugar' }" @click="selectedTab = 'alugar'">Alugar</button>
         <button :class="{ active: selectedTab === 'comprar' }" @click="selectedTab = 'comprar'">Comprar</button>
       </div>
-      <form class="search-form">
+      <form class="search-form" @submit.prevent="validarFormulario">
         <div class="form-group">
           <input type="text" placeholder="Busque por cidade" v-model="cidade" />
         </div>
         <div class="form-group">
           <input type="text" placeholder="Busque por bairro" v-model="bairro" />
         </div>
-        <div class="form-group">
-          <select v-model="valor">
-            <option value="">Valor total até</option>
-            <option value="1000">R$ 1.000</option>
-            <option value="2000">R$ 2.000</option>
-            <option value="5000">R$ 5.000</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <select v-model="quartos">
-            <option value="">Nº de quartos</option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-          </select>
+        <div class="form-row">
+          <div class="form-group">
+            <select v-model="valor">
+              <option value="">Escolha o valor</option>
+              <option value="1000">R$ 1.000</option>
+              <option value="2000">R$ 2.000</option>
+              <option value="5000">R$ 5.000</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <select v-model="quartos">
+              <option value="">Nº de quartos</option>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+            </select>
+          </div>
         </div>
         <button type="submit" class="btn-search">Buscar imóveis</button>
       </form>
@@ -36,7 +39,11 @@
         <a href="#">Veja os serviços para você</a>
       </div>
     </div>
-  </section>
+    <div class="image-container">
+      <img src="../assets/fundoHome.jpg" alt="Pessoa usando celular" />
+    </div>
+  </div>
+</section>
 </template>
 
 <script>
@@ -50,43 +57,65 @@ export default {
       quartos: '',
     };
   },
+  methods: {
+    validarFormulario() {
+      if (!this.cidade || !this.bairro) {
+        alert("Por favor, preencha todos os campos obrigatórios.");
+        return false;
+      }
+      alert("Formulário enviado!");
+      return true;
+    },
+  },
 };
 </script>
 
 <style scoped>
-/* Section with background */
 .background-section {
   display: flex;
   justify-content: center;
   align-items: center;
   padding: 40px 20px;
-  background: url('../assets/fundoHome.jpg') no-repeat center center/cover;
-  border-radius: 12px;
-  max-width: 1200px;
-  margin: 0 auto;
+  background-color: #f9f9f9;
 }
 
-/* Form Card */
-.form-card {
-  background: rgba(255, 255, 255, 0.95);
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-  padding: 20px;
-  width: 100%;
-  max-width: 400px;
+.form-wrapper {
   display: flex;
-  flex-direction: column;
-  align-items: stretch;
+  gap: 20px;
+  align-items: center;
+  max-width: 1200px;
+  width: 100%;
+}
+
+.form-card {
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px 20px;
+  max-width: 400px;
+  flex: 1;
+}
+
+.image-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.image-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
 }
 
 h1 {
-  font-size: 24px;
+  font-size: 28px;
+  font-weight: bold;
   margin-bottom: 20px;
-  text-align: center;
-  color: #333;
+  color: #111827;
 }
 
-/* Tabs */
 .tabs {
   display: flex;
   justify-content: space-between;
@@ -98,20 +127,18 @@ h1 {
   padding: 10px;
   margin: 0 5px;
   border: none;
-  border-radius: 20px;
-  background-color: #f5f5f5;
-  cursor: pointer;
+  border-radius: 12px;
+  background-color: #f3f4f6;
+  color: #4b5563;
   font-weight: bold;
-  color: #666;
   transition: all 0.3s ease;
 }
 
 .tabs button.active {
-  background-color: #3b82f6;
-  color: #fff;
+  background-color: #2563eb;
+  color: white;
 }
 
-/* Form */
 .search-form {
   display: flex;
   flex-direction: column;
@@ -120,60 +147,58 @@ h1 {
 
 .form-group input,
 .form-group select {
-  padding: 10px;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  font-size: 14px;
   width: 100%;
-}
-
-input:focus,
-select:focus {
-  border-color: #3b82f6;
-  outline: none;
-}
-
-/* Button */
-.btn-search {
   padding: 10px;
-  background-color: #3b82f6;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 16px;
+  margin-left: 0.3vh;
+}
+
+.form-row {
+  display: flex;
+  gap: 15px;
+}
+
+.btn-search {
+  width: 100%;
+  padding: 10px;
+  background-color: #2563eb;
   color: white;
   font-size: 16px;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s ease;
 }
 
 .btn-search:hover {
-  background-color: #2563eb;
+  background-color: #1e40af;
 }
 
-/* Owner Section */
 .owner-section {
-  margin-top: 15px;
+  margin-top: 20px;
   text-align: center;
 }
 
-.owner-section p {
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
 .owner-section a {
-  color: #3b82f6;
+  color: #2563eb;
   text-decoration: none;
   font-weight: bold;
 }
 
-/* Responsiveness */
 @media (max-width: 768px) {
-  .form-card {
-    margin: 0 auto;
-    width: 90%;
+  .form-wrapper {
+    flex-direction: column;
+    align-items: stretch;
   }
-  .background-section {
-    border-radius: 0;
+
+  .form-card,
+  .image-container {
+    max-width: 100%;
+  }
+
+  .image-container img {
+    display: none;
   }
 }
 </style>
