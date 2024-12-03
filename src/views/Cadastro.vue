@@ -50,40 +50,44 @@ import axios from "axios";
 
 export default {
   data() {
-    return {
-      form: {
-        nome: "",
-        email: "",
-        telefone: "",
-        login: "",
-        senha: ""
-      },
-      apiEndpoint: "https://localhost:7183/conexao" // URL da API
-    };
-  },
-  methods: {
-    async handleSubmit() {
-      try {
-        const response = await axios.get(this.apiEndpoint);
+  return {
+    form: {
+      nome: "",
+      email: "",
+      telefone: "",
+      dataNascimento: "",
+      login: "",
+      senha: ""
+    },
+    apiEndpoint: "https://localhost:7183/api/Clientes" // URL correta da API
+  };
+},
 
-        // if (response.status === 200) {
-        //   alert(`Usuário ${this.form.nome} cadastrado com sucesso!`);
-        //   console.log("Resposta do Servidor:", response.data);
-        //   // Limpar formulário após cadastro
-        //   this.form = {
-        //     nome: "",
-        //     email: "",
-        //     telefone: "",
-        //     login: "",
-        //     senha: ""
-        //   };
-        // }
-      } catch (error) {
-        console.error("Erro ao cadastrar usuário:", error);
-        alert("Erro ao cadastrar usuário. Tente novamente mais tarde.");
+methods: {
+  async handleSubmit() {
+    try {
+      const response = await axios.post(this.apiEndpoint, this.form);
+
+      if (response.status === 200 || response.status === 201) {
+        alert(`Usuário ${this.form.nome} cadastrado com sucesso!`);
+        console.log("Resposta do Servidor:", response.data);
+        // Limpar formulário após cadastro
+        this.form = {
+          nome: "",
+          email: "",
+          telefone: "",
+          dataNascimento: "",
+          login: "",
+          senha: ""
+        };
       }
+    } catch (error) {
+      console.error("Erro ao cadastrar usuário:", error);
+      alert("Erro ao cadastrar usuário. Tente novamente mais tarde.");
     }
   }
+}
+
 };
 </script>
 
