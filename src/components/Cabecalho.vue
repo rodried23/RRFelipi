@@ -1,7 +1,11 @@
 <template>
     <div :class="{ scrolled: isScrolled }" class="header">
-      <img v-if="isScrolled" src="../assets/logo.svg" class="logo" alt="Logo" />
-      <img v-if="!isScrolled" src="../assets/logo1.svg" class="logo" alt="Logo" />
+      <a v-if="isScrolled" href="/home">
+    <img src="../assets/logo.svg" class="logo" alt="Logo" />
+  </a>
+  <a v-if="!isScrolled" href="/home">
+    <img src="../assets/logo1.svg" class="logo" alt="Logo" />
+  </a>
       <nav class="navbar">
         <a href="/Sobre">About</a>
         <a href="/Cadastro" class="login">Entrar</a>
